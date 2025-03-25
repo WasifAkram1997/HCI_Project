@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert } from "reactstrap";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -25,25 +27,46 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h2>Signup</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSignup}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Signup</button>
-      </form>
-    </div>
+    <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+      <Row className="w-100">
+        <Col md="6" className="mx-auto">
+          <div className="card shadow-sm p-4">
+            <h2 className="text-center mb-4">Signup</h2>
+            {error && <Alert color="danger">{error}</Alert>}
+            <Form onSubmit={handleSignup}>
+              <FormGroup>
+                <Label for="username">Username</Label>
+                <Input
+                  type="text"
+                  id="username"
+                  placeholder="Enter username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="password">Password</Label>
+                <Input
+                  type="password"
+                  id="password"
+                  placeholder="Enter password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </FormGroup>
+              <Button color="primary" block type="submit">
+                Signup
+              </Button>
+            </Form>
+            <p className="text-center mt-3">
+              Already have an account? <Link to="/">Login</Link>
+            </p>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

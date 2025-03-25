@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert } from "reactstrap";
 
-const Login = ({ onLogin }) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   setUsername("");
+  //   setPassword("");
+  //   setError("");
+  // }, [])
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -14,7 +23,9 @@ const Login = ({ onLogin }) => {
           (user) => user.username === username && user.password === password
         );
         if (user) {
-          onLogin(user);
+          // onLogin(user);
+          // <p>dwadawdwd</p>
+          navigate('/home'); // Log in the user
         } else {
           setError("Invalid username or password");
         }
@@ -22,25 +33,46 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+      <Row className="w-100">
+        <Col md="6" className="mx-auto">
+          <div className="card shadow-sm p-4">
+            <h2 className="text-center mb-4">Login</h2>
+            {error && <Alert color="danger">{error}</Alert>}
+            <Form onSubmit={handleLogin}>
+              <FormGroup>
+                <Label for="username">Username</Label>
+                <Input
+                  type="text"
+                  id="username"
+                  placeholder="Enter username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="password">Password</Label>
+                <Input
+                  type="password"
+                  id="password"
+                  placeholder="Enter password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </FormGroup>
+              <Button color="primary" block type="submit" >
+                Login
+              </Button>
+            </Form>
+            <p className="text-center mt-3">
+              Don't have an account? <Link to="/signup">Create an account</Link>
+            </p>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
