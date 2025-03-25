@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, Spinner, Modal } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
   const [month, setMonth] = useState("");
@@ -10,6 +11,8 @@ const Payment = () => {
   const [cvv, setCvv] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
+  const navigate = useNavigate();
 
   const handlePayment = () => {
     if (
@@ -140,7 +143,12 @@ const Payment = () => {
           Your payment was successful. Thank you for your purchase!
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
+          <Button variant="secondary" onClick={() => {
+              setShowModal(false)
+              navigate("/home")
+
+
+          }}>
             Close
           </Button>
         </Modal.Footer>

@@ -6,6 +6,7 @@ import NavbarComponent from "./components/Navbar";
 import Homepage from "./components/Homepage";
 import Contact from "./components/Contact";
 import Payment from "./components/Payment";
+import Leaderboard from "./components/Leaderboard";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -24,7 +25,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           {/* Routes with Navbar */}
           <Route path="/home" element={<Homepage />} />
-          <Route path="/leaderboard" element={<h1>Leaderboard</h1>} />
+          <Route path="/leaderboard" element={<Leaderboard  user ={user}/>} />
           <Route path="/newsletter" element={<h1>Newsletter</h1>} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/scheduler" element={<h1>Scheduler</h1>} />

@@ -1,0 +1,107 @@
+/* General styling */
+.exercise-form {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading style */
+  .heading {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Form input and label styling */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .input-dropdown, .input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: all 0.3s;
+  }
+  
+  .input-dropdown:focus, .input-field:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
+  
+  .btn-add {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-add:hover {
+    background-color: #218838;
+  }
+  
+  /* Table styling */
+  .exercise-table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  .exercise-table th, .exercise-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .exercise-table th {
+    background-color: #f1f1f1;
+    color: #333;
+  }
+  
+  .exercise-table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .exercise-form {
+      padding: 15px;
+    }
+  
+    .heading {
+      font-size: 1.5rem;
+    }
+  
+    .input-dropdown, .input-field {
+      font-size: 0.9rem;
+    }
+  
+    .btn-add {
+      font-size: 0.9rem;
+    }
+  }
+  
