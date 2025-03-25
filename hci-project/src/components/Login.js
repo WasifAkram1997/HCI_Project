@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert } from "reactstrap";
 
-const Login = () => {
+const Login = ({onLogin}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -23,7 +23,7 @@ const Login = () => {
           (user) => user.username === username && user.password === password
         );
         if (user) {
-          // onLogin(user);
+          onLogin(user);
           // <p>dwadawdwd</p>
           navigate('/home'); // Log in the user
         } else {
