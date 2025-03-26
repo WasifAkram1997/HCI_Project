@@ -7,6 +7,8 @@ import Homepage from "./components/Homepage";
 import Contact from "./components/Contact";
 import Payment from "./components/Payment";
 import Leaderboard from "./components/Leaderboard";
+import CalendarTrial from "./components/CalendarTrial";
+import Newsletter from "./components/Newsletter";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -26,9 +28,9 @@ const App = () => {
           {/* Routes with Navbar */}
           <Route path="/home" element={<Homepage />} />
           <Route path="/leaderboard" element={<Leaderboard  user ={user}/>} />
-          <Route path="/newsletter" element={<h1>Newsletter</h1>} />
+          <Route path="/newsletter" element={<Newsletter />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/scheduler" element={<h1>Scheduler</h1>} />
+          <Route path="/scheduler" element={<CalendarTrial user = {user} setUser={setUser} />} />
           <Route path="/payment" element={<Payment />} />
           
         </Routes>

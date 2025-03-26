@@ -1,0 +1,7 @@
+/* Ensure all images have a uniform height while maintaining their aspect ratio */
+.uniform-height {
+    width: 100%; /* Make the image take the full width of the container */
+    height: 700px; /* Set a fixed height for uniformity (adjust as needed) */
+    object-fit: cover; /* Ensures that the image covers the area without stretching */
+  }
+  

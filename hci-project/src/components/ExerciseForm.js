@@ -49,7 +49,7 @@ const ExerciseForm = () => {
   };
 
   return (
-    <div className="exercise-form">
+    <div className="exercise-form my-4">
       <h2 className="heading">Exercise Tracker</h2>
       
       <div className="form-group">

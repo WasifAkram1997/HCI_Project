@@ -1,89 +1,190 @@
 {
   "users": [
-   
     {
-      "id": "13f0a",
-      "username": "samir",
-      "name": "SAMIR AHMED",
-      "password": "1234",
-      "score": 450
+      "id": "4172",
+      "firstName": "Gazi Wasif",
+      "lastName": "Akram",
+      "studentId": "40294332",
+      "email": "wasifakram@iut-dhaka.edu",
+      "contact": "5142403250",
+      "password": "test123",
+      "score": 0,
+      "events": [
+        {
+          "id": 2,
+          "title": "Online Fitness Class - Zahir Khan's Presentation",
+          "start": "2025-03-05T19:00:00.000Z",
+          "end": "2025-03-05T21:00:00.000Z",
+          "allDay": false,
+          "type": "Online Fitness Class",
+          "resource": {
+            "username": "zahir",
+            "score": 780
+          }
+        },
+        {
+          "id": "1",
+          "title": "Personal Training - Samir Ahmed's Meeting",
+          "start": "2025-03-01T15:00:00.000Z",
+          "end": "2025-03-01T16:00:00.000Z",
+          "allDay": false,
+          "type": "Personal Training",
+          "resource": {
+            "username": "samir",
+            "score": 450
+          }
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "1",
+      "title": "Personal Training - Samir Ahmed's Meeting",
+      "start": "2025-03-01T10:00:00",
+      "end": "2025-03-01T11:00:00",
+      "allDay": false,
+      "type": "Personal Training",
+      "resource": {
+        "username": "samir",
+        "score": 450
+      }
     },
     {
-      "id": "53a8b",
-      "username": "zahir",
-      "name": "ZAHIR KHAN",
-      "password": "1234",
-      "score": 780
+      "id": "2",
+      "title": "Online Fitness Class - Zahir Khan's Presentation",
+      "start": "2025-03-05T14:00:00",
+      "end": "2025-03-05T16:00:00",
+      "allDay": false,
+      "type": "Online Fitness Class",
+      "resource": {
+        "username": "zahir",
+        "score": 780
+      }
     },
     {
-      "id": "7444c",
-      "username": "test",
-      "name": "TEST USER",
-      "password": "123",
-      "score": 95
+      "id": "3",
+      "title": "Online Fitness Class - Faisal Hassan's Interview",
+      "start": "2025-03-10T09:30:00",
+      "end": "2025-03-10T10:30:00",
+      "allDay": false,
+      "type": "Online Fitness Class",
+      "resource": {
+        "username": "faisal",
+        "score": 1100
+      }
     },
     {
-      "id": "2d17",
-      "username": "ali",
-      "name": "ALI RAHMAN",
-      "password": "5678",
-      "score": 200
+      "id": "4",
+      "title": "Online Fitness Class - Jessica Lee's Doctor Appointment",
+      "start": "2025-03-15T08:00:00",
+      "end": "2025-03-15T09:00:00",
+      "allDay": false,
+      "type": "Online Fitness Class",
+      "resource": {
+        "username": "jessica",
+        "score": 1550
+      }
     },
     {
-      "id": "8e3f",
-      "username": "faisal",
-      "name": "FAISAL HASSAN",
-      "password": "9101",
-      "score": 1100
+      "id": "5",
+      "title": "Personal Training - Maria Gomez's Team Meeting",
+      "start": "2025-03-18T13:00:00",
+      "end": "2025-03-18T14:00:00",
+      "allDay": false,
+      "type": "Personal Training",
+      "resource": {
+        "username": "maria",
+        "score": 320
+      }
     },
     {
-      "id": "7c21",
-      "username": "maria",
-      "name": "MARIA GOMEZ",
-      "password": "1213",
-      "score": 320
+      "id": "6",
+      "title": "Online Fitness Class - Daniel Wong's Workshop",
+      "start": "2025-03-22T10:00:00",
+      "end": "2025-03-22T12:00:00",
+      "allDay": false,
+      "type": "Online Fitness Class",
+      "resource": {
+        "username": "daniel",
+        "score": 900
+      }
     },
     {
-      "id": "6f2a",
-      "username": "jessica",
-      "name": "JESSICA LEE",
-      "password": "1415",
-      "score": 1550
+      "id": "7",
+      "title": "Online Fitness Class - Lisa Chan's Conference",
+      "start": "2025-03-25T15:00:00",
+      "end": "2025-03-25T17:00:00",
+      "allDay": false,
+      "type": "Online Fitness Class",
+      "resource": {
+        "username": "lisa",
+        "score": 1320
+      }
     },
     {
-      "id": "9a34",
-      "username": "rahul",
-      "name": "RAHUL SINGH",
-      "password": "1617",
-      "score": 620
+      "id": "8",
+      "title": "Personal Training - Hassan Mehmood's Training",
+      "start": "2025-03-28T11:00:00",
+      "end": "2025-03-28T12:30:00",
+      "allDay": false,
+      "type": "Personal Training",
+      "resource": {
+        "username": "hassan",
+        "score": 50
+      }
+    }
+  ],
+  "news": [
+    {
+      "id": "1",
+      "title": "Top 5 Gym Workouts for Building Muscle",
+      "description": "Building muscle is one of the primary goals for many gym-goers, but achieving it requires more than just lifting weights. To get the most out of your workout routine, it’s essential to target all of the major muscle groups in your body. Compound exercises like deadlifts, squats, bench presses, and pull-ups are fantastic for engaging multiple muscle groups at once. Incorporating a variety of resistance training exercises is key to achieving balanced muscle growth. Proper form is just as important as intensity, so make sure to focus on correct posture to avoid injury. Nutrition also plays a huge role—be sure to consume enough protein, healthy fats, and complex carbohydrates to fuel your workouts and aid in muscle recovery. In this article, we'll dive into the top five gym workouts that will help you build muscle efficiently and sustainably."
     },
     {
-      "id": "b125",
-      "username": "sofia",
-      "name": "SOFIA MARTINEZ",
-      "password": "1819",
-      "score": 50
+      "id": "2",
+      "title": "Nutrition Tips for Gym Goers at Concordia",
+      "description": "If you're hitting the gym regularly, then what you put into your body matters as much as the workout itself. Nutrition is crucial for fueling your body before a workout and helping your muscles recover afterward. At Concordia University, students often juggle studies with their fitness goals, which can make it hard to find time for healthy eating. However, making simple adjustments to your meals can make a significant difference. Eating a balanced meal with protein and complex carbohydrates about 1-2 hours before your workout will provide the energy needed to perform at your best. Afterward, replenishing glycogen stores with carbs and repairing muscle fibers with protein will aid in recovery. The best foods for gym-goers include lean meats, vegetables, whole grains, and healthy fats like avocados and olive oil. Learn how to maximize your nutritional intake with these easy tips, and you'll see improvements not only in your gym performance but also in your overall well-being."
     },
     {
-      "id": "c231",
-      "username": "daniel",
-      "name": "DANIEL WONG",
-      "password": "2021",
-      "score": 900
+      "id": "3",
+      "title": "The Importance of Hydration for Athletes",
+      "description": "When it comes to fitness, staying hydrated is often overlooked, yet it's one of the most important aspects of performance and recovery. Dehydration can lead to a decrease in energy, endurance, and even strength during workouts. It can also make it harder for your body to recover afterward. Athletes, in particular, need to stay properly hydrated to avoid cramps, dizziness, and fatigue. Water regulates your body temperature, supports nutrient transport, and helps maintain joint lubrication. As a gym-goer at Concordia, make sure to drink water consistently throughout the day, not just during your workout. It’s also important to replenish electrolytes (such as sodium and potassium) after intense workouts by consuming sports drinks or eating foods rich in electrolytes. This article will cover the best hydration practices for athletes and provide tips on how to maintain proper hydration to keep your workouts at their peak."
     },
     {
-      "id": "d754",
-      "username": "hassan",
-      "name": "HASSAN MEHMOOD",
-      "password": "2223",
-      "score": 50
+      "id": "4",
+      "title": "Best Protein Sources for Building Muscle",
+      "description": "Protein is the building block of muscle tissue, and if you’re looking to build muscle mass, then ensuring you’re getting enough protein is essential. The good news is there are plenty of sources of protein to suit any diet, whether you’re a meat eater or prefer plant-based options. For those who eat meat, lean meats like chicken, turkey, and fish are excellent sources. For vegetarians or vegans, foods like lentils, beans, quinoa, tofu, and tempeh are rich in protein. Eggs, cottage cheese, and Greek yogurt also provide high-quality protein, as do protein powders that can supplement your diet. It’s crucial to consume protein both before and after your workout to promote muscle repair and growth. In this article, we’ll break down the best protein sources for gym-goers, helping you make the right food choices to build muscle and improve your performance at the gym."
     },
     {
-      "id": "e876",
-      "username": "lisa",
-      "name": "LISA CHAN",
-      "password": "2425",
-      "score": 1320
+      "id": "5",
+      "title": "Top 10 Healthy Snacks for Gym Goers",
+      "description": "Snacking can play a big role in keeping your energy levels up during a busy day of work, study, and gym workouts. However, it’s important to choose healthy snacks that will fuel your body and aid in muscle recovery. The best snacks for gym-goers are those that provide a balance of protein, healthy fats, and complex carbohydrates. Examples of good snack choices include a handful of almonds with an apple, hummus with carrot sticks, or a protein bar with minimal added sugar. Greek yogurt with fruit, boiled eggs, and a smoothie made with protein powder and spinach are also excellent options. These snacks not only give you a boost of energy but also help to stabilize your blood sugar and prevent overeating later in the day. In this article, we’ll cover the top 10 healthy snacks that will support your workout goals and keep you feeling energized throughout the day."
+    },
+    {
+      "id": "6",
+      "title": "Why Stretching is Important Before and After Workouts",
+      "description": "Stretching is often neglected in workout routines, but it is an essential component of any exercise regimen. Stretching helps improve flexibility, prevent injuries, and reduce muscle soreness after workouts. A proper warm-up, including dynamic stretches, prepares your muscles for exercise by increasing blood flow and improving range of motion. Static stretching after a workout helps to lengthen the muscles and reduce tightness, which is especially important after intense weight training or cardio sessions. Stretching also helps to relax your muscles and restore them to their natural length. For Concordia gym-goers, incorporating stretching into your daily routine will enhance your performance and make your workouts safer and more effective. This article will explain the science behind stretching and provide examples of effective stretches to add to your pre- and post-workout routines."
+    },
+    {
+      "id": "7",
+      "title": "Concordia Gym's New Fitness Classes: What to Expect",
+      "description": "Concordia University’s gym is always striving to provide new and exciting ways for students to stay active. Recently, several new fitness classes have been introduced to cater to the growing demand for diverse workout options. These classes range from high-intensity interval training (HIIT) to yoga and Pilates, designed to improve flexibility, strength, and endurance. In addition, the gym now offers specialized classes focused on improving athletic performance and recovery. Whether you’re looking for a full-body workout, stress relief, or athletic training, these classes offer something for everyone. This article will give you an overview of the new classes offered at the Concordia gym and how they can help you achieve your fitness goals in a fun and supportive environment."
+    },
+    {
+      "id": "8",
+      "title": "How to Stay Motivated to Work Out at Concordia",
+      "description": "Staying motivated to work out consistently can be difficult, especially when balancing academics, social life, and personal commitments. However, developing a consistent workout routine is essential for achieving long-term fitness goals. The key to staying motivated is setting clear and achievable goals, creating a routine, and finding ways to make your workouts enjoyable. Whether you prefer to work out alone or with a group, Concordia offers plenty of options to stay active, from gym sessions to fitness classes. You can also find a workout buddy to keep each other accountable or join fitness challenges to stay motivated. In this article, we’ll explore strategies for staying motivated, setting realistic goals, and building a routine that fits into your busy lifestyle at Concordia University."
+    },
+    {
+      "id": "9",
+      "title": "The Benefits of Cardio Workouts for Heart Health",
+      "description": "Cardiovascular exercise, or cardio, is one of the most important types of exercise for improving heart health. Regular cardio workouts increase heart rate, improve circulation, and help reduce the risk of heart disease. Cardio can also improve lung capacity, lower blood pressure, and boost overall endurance. Whether you enjoy running, cycling, swimming, or participating in cardio-focused fitness classes, the benefits are numerous. Not only will cardio workouts improve your heart health, but they also burn calories, improve mood, and promote overall fitness. This article will explore the many benefits of cardio, provide tips for getting started, and highlight some of the best cardio exercises for gym-goers looking to improve their heart health."
+    },
+    {
+      "id": "10",
+      "title": "How to Get the Most Out of Your Gym Membership at Concordia",
+      "description": "As a Concordia student, your gym membership is an excellent resource to help you achieve your fitness goals. But to truly make the most of it, it’s important to utilize the full range of facilities and classes available. This includes not only using the gym for weightlifting and cardio sessions but also attending fitness classes, joining fitness challenges, and using additional services like personal training or nutritional counseling. To maximize your membership, it’s helpful to plan your workouts in advance, try new classes, and track your progress. In this article, we’ll give you tips on how to make the most of your gym membership at Concordia and explain the different programs and opportunities that can help you stay on track with your fitness journey."
     }
   ]
 }

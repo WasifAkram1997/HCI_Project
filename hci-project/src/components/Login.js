@@ -20,7 +20,7 @@ const Login = ({onLogin}) => {
       .then((response) => response.json())
       .then((data) => {
         const user = data.find(
-          (user) => user.username === username && user.password === password
+          (user) => user.studentId === username && user.password === password
         );
         if (user) {
           onLogin(user);
@@ -41,7 +41,7 @@ const Login = ({onLogin}) => {
             {error && <Alert color="danger">{error}</Alert>}
             <Form onSubmit={handleLogin}>
               <FormGroup>
-                <Label for="username">Username</Label>
+                <Label for="username">Student ID</Label>
                 <Input
                   type="text"
                   id="username"

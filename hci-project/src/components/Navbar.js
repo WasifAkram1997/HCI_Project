@@ -10,7 +10,7 @@ const NavbarComponent = ({onLogout}) => {
    }
   return (
 
-    <div className='py-2 px-5 text-center bg-primary text-white'>
+    <div className='py-2 px-5 text-center text-white' style={{ backgroundColor: 'rgb(70, 50, 55)' }}>
         <div className='d-flex flex-row justify-content-center  align-items-center'>
         <div className='p-2 cursor-pointer fw-bold fs-5' onClick={() => handleNavigate('/home')}>Home</div>
         <div className='p-2 cursor-pointer fw-bold fs-5' onClick={() => handleNavigate('/leaderboard')}>Leaderboard</div>

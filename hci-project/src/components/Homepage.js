@@ -1,9 +1,12 @@
+import CardsList from "./CardsList";
 import NavbarComponent from "./Navbar";
+import MyCarousel from "./UncontrolledCarousal";
 
 const Homepage = () => {
     return(
         <div>
-           Ami homepage
+          <MyCarousel />
+          <CardsList />
         </div>
     )
 }
