@@ -1,35 +1,63 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert } from "reactstrap";
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert, Toast, ToastHeader, ToastBody, Spinner } from "reactstrap";
 
-const Login = ({onLogin}) => {
+const Login = ({ onLogin, setLocation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false)
+  const [showToast, setShowToast] = useState(false)
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   setUsername("");
-  //   setPassword("");
-  //   setError("");
-  // }, [])
+  useEffect(() => {
+    setUsername("");
+    setPassword("");
+    setError("");
+    setLocation("/login");
+  }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/users")
-      .then((response) => response.json())
-      .then((data) => {
-        const user = data.find(
-          (user) => user.studentId === username && user.password === password
-        );
-        if (user) {
-          onLogin(user);
-          // <p>dwadawdwd</p>
-          navigate('/home'); // Log in the user
-        } else {
-          setError("Invalid username or password");
-        }
-      });
+    setLoading(true); // Start loading when login is pressed
+
+    // Simulate delay (e.g., to show spinner)
+    setTimeout(() => {
+      fetch("http://localhost:5000/users")
+        .then((response) => response.json())
+        .then((data) => {
+          const user = data.find(
+            (user) => user.studentId === username && user.password === password
+          );
+          setLoading(false); // Stop loading when response is received
+
+          if (user) {
+            
+            setShowToast(true); // Show success toast
+            setTimeout(() => {
+              setShowToast(false);
+              onLogin(user);
+            navigate("/");
+               // Redirect after a successful login
+            }, 1000); // Hide toast after 3 seconds
+          } else {
+            setError("Invalid username or password");
+          }
+        })
+        .catch((error) => {
+          setLoading(false); // Stop loading if there's an error
+          setError("Something went wrong. Please try again.");
+        });
+    }, 1000); // Simulate 1 second delay
+  };
+
+  const handleUsernameChange = (e) => {
+    // Allow only numbers and ensure the length is exactly 8
+    const value = e.target.value;
+
+    if (/^\d{0,9}$/.test(value)) {
+      setUsername(value);
+    }
   };
 
   return (
@@ -45,11 +73,16 @@ const Login = ({onLogin}) => {
                 <Input
                   type="text"
                   id="username"
-                  placeholder="Enter username"
+                  placeholder="Enter student ID (8 digits)"
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={handleUsernameChange}
+                  maxLength={8}
                   required
                 />
+                {/* Optional: You can show a message when the length is not 8 */}
+                {username.length !== 8 && username.length > 0 && (
+                  <Alert color="danger">Student Id must be 8 digits long</Alert>
+                )}
               </FormGroup>
               <FormGroup>
                 <Label for="password">Password</Label>
@@ -62,9 +95,11 @@ const Login = ({onLogin}) => {
                   required
                 />
               </FormGroup>
-              <Button color="primary" block type="submit" >
-                Login
-              </Button>
+              <div className="d-flex flex-row justify-content-center">
+                <Button color="primary" type="submit" disabled={username.length !== 8 || loading}>
+                  {loading ? <Spinner size="sm" /> : "Login"}
+                </Button>
+              </div>
             </Form>
             <p className="text-center mt-3">
               Don't have an account? <Link to="/signup">Create an account</Link>
@@ -72,6 +107,16 @@ const Login = ({onLogin}) => {
           </div>
         </Col>
       </Row>
+      
+      {/* Toast for successful login */}
+      {showToast && (
+        <div className="position-fixed top-0 end-0 p-3">
+          <Toast>
+            <ToastHeader>Success</ToastHeader>
+            <ToastBody>Logged in successfully!</ToastBody>
+          </Toast>
+        </div>
+      )}
     </Container>
   );
 };

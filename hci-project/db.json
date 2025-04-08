@@ -35,6 +35,52 @@
           }
         }
       ]
+    },
+    {
+      "id": "f665",
+      "firstName": "wdfwwwwwwwwwwwwwwwww",
+      "lastName": "wwwwwwwwwwwwwwwwwwww",
+      "studentId": "4029433",
+      "email": "d@gmail.com",
+      "contact": "5142403250",
+      "password": "test123",
+      "score": 0,
+      "events": []
+    },
+    {
+      "id": "0f07",
+      "firstName": "Gazi Wasif",
+      "lastName": "Akram",
+      "studentId": "40342",
+      "email": "a@gmail.com",
+      "contact": "23213",
+      "password": "test123",
+      "score": 0,
+      "events": []
+    },
+    {
+      "id": "425d",
+      "firstName": "Maisha Anan",
+      "lastName": "Prova",
+      "studentId": "40294324",
+      "email": "antora.anan@gmail.com",
+      "contact": "5142403250",
+      "password": "test123",
+      "score": 0,
+      "events": [
+        {
+          "id": "1",
+          "title": "Personal Training - Samir Ahmed's Meeting",
+          "start": "2025-03-01T15:00:00.000Z",
+          "end": "2025-03-01T16:00:00.000Z",
+          "allDay": false,
+          "type": "Personal Training",
+          "resource": {
+            "username": "samir",
+            "score": 450
+          }
+        }
+      ]
     }
   ],
   "events": [

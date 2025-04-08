@@ -20,7 +20,7 @@ const NewsAccordion = () => {
   }, []);
 
   return (
-    <Container className="my-4">
+    <Container className="my-4 border rounded p-2">
       <h1>Exciting News For Gym Goers</h1>
       <UncontrolledAccordion>
         {newsItems.map((news) => (

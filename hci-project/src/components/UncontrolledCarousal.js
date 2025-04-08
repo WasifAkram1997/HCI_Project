@@ -108,15 +108,15 @@ const Mycarousel = () => {
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        autoplay={{ delay: 2000, disableOnInteraction: false }} // Enable autoplay, 1000ms (1 second) per slide
+        autoplay={{ delay: 4000, disableOnInteraction: false }} // Enable autoplay, 1000ms (1 second) per slide
         loop={true} // Enable looping
         modules={[Autoplay]}
       >
         {items.map((item) => (
           <SwiperSlide key={item.key}>
             <img src={item.src} alt={item.altText} className="uniform-height" />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>{item.caption}</h5>
+            <div className="carousel-caption text-center">
+              <h1 className='display-1 opacity-75'>{item.caption}</h1>
             </div>
           </SwiperSlide>
         ))}

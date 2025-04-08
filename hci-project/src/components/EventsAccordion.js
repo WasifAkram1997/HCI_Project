@@ -43,7 +43,7 @@ const EventsAccordion = () => {
       }
 
     return(
-        <Container className = "my-4">
+        <Container className = "my-4 border rounded p-2">
             <h1>Upcoming Events</h1>
             <Accordion open={open} toggle={toggle}>
                 {eventsList.map((event) => (
