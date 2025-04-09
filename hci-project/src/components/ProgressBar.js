@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Progress, Container, Card } from "reactstrap";
 
-const ProgressBar = ({ username }) => {
+const ProgressBar = ({ user }) => {
   const [score, setScore] = useState(0);
   const [rank, setRank] = useState("Bronze");
   const [nextRank, setNextRank] = useState("Silver");
@@ -13,13 +13,14 @@ const ProgressBar = ({ username }) => {
     fetch("http://localhost:5000/users")
       .then((res) => res.json())
       .then((data) => {
-        const user = data.find((u) => u.username === username);
-        if (user) {
-          calculateProgress(user.score);
+        const userdata = data.find((u) => u.id == user.id);
+        if (userdata) {
+          // console.log(user)
+          calculateProgress(userdata.score);
         }
       })
       .catch((error) => console.error("Error fetching user data:", error));
-  }, [username]);
+  }, [user]);
 
   const calculateProgress = (score) => {
     setScore(score);
@@ -28,25 +29,25 @@ const ProgressBar = ({ username }) => {
       nextThreshold = 200,
       percentage = (score / 200) * 100;
 
-    if (score >= 200 && score < 500) {
+    if (score >= 200 && score < 400) {
       rankName = "Silver";
       nextRankName = "Gold";
-      nextThreshold = 500;
-      percentage = ((score - 200) / 300) * 100;
-    } else if (score >= 500 && score < 1000) {
+      nextThreshold = 400;
+      percentage = 100 - (score  / 400) * 100;
+    } else if (score >= 400 && score < 600) {
       rankName = "Gold";
       nextRankName = "Diamond";
-      nextThreshold = 1000;
-      percentage = ((score - 500) / 500) * 100;
-    } else if (score >= 1000 && score < 1500) {
+      nextThreshold = 600;
+      percentage = 100 - (score  / 600) * 100;
+    } else if (score >= 600 && score < 800) {
       rankName = "Diamond";
       nextRankName = "Platinum";
-      nextThreshold = 1500;
-      percentage = ((score - 1000) / 500) * 100;
-    } else if (score >= 1500) {
+      nextThreshold = 800;
+      percentage = 100 - (score  / 800) * 100;
+    } else if (score >= 800) {
       rankName = "Platinum";
       nextRankName = "Max Rank!";
-      nextThreshold = 1500;
+      // nextThreshold = 1500;
       percentage = 100;
     }
 
@@ -57,24 +58,31 @@ const ProgressBar = ({ username }) => {
   };
 
   return (
-    <Container className="d-flex justify-content-center mt-4">
-      <Card
-        className="p-4 shadow-lg w-100"
+    <Container>
+      {/* <Card
+        // className="shadow-lg"
+        className="p-4 border-0"
         style={{
-          maxWidth: "700px",
-          width: "95%",
-          background: "#f8f9fa",
-          borderRadius: "15px",
+          // maxWidth: "700px",
+          // width: "95%",
+          // background: "#f8f9fa",
+          // borderRadius: "15px",
         }}
-      >
-        <h3 className="text-center mb-3" style={{ fontWeight: "bold", color: "#343a40" }}>
+      > */}
+      <div className="d-flex flex-row align-items-center">
+        <h5 className="mr-2">
           🎖 Your Rank: {rank}
-        </h3>
-        <h5 className="text-center text-muted">
-          {nextRank !== "Max Rank!" ? `You need ${pointsToNext} more points for ${nextRank}` : "You have reached the highest rank!"}
         </h5>
+        <h6 className="ml-2">
+          {nextRank !== "Max Rank!" ? `(You need ${pointsToNext} more points for ${nextRank})` : "(You have reached the highest rank!)"}
+        </h6>
+      </div>
+        
 
-        <div className="progress-container mt-4">
+        
+       
+
+        <div className="mt-3">
           <Progress
             animated
             color={rankColor(rank)}
@@ -88,7 +96,7 @@ const ProgressBar = ({ username }) => {
             {progress.toFixed(1)}%
           </Progress>
         </div>
-      </Card>
+      {/* </Card> */}
     </Container>
   );
 };

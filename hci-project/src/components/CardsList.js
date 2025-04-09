@@ -26,12 +26,7 @@ const CardsList = () => {
             image: '/images/image4.jpeg',
             path: '/payment'
         },
-        {
-            title: "Contact Us",
-            description: "Let us know your thoughts",
-            image: '/images/image5.jpg',
-            path: '/contact'
-        },
+       
     ]
     return(
         <Container>

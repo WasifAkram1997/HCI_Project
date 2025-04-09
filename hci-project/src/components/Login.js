@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert, Toast, ToastHeader, ToastBody, Spinner } from "reactstrap";
+import showSuccessToast from "../lib/showSuccessToast";
+import Toaster from "./Toaster";
 
 const Login = ({ onLogin, setLocation }) => {
   const [username, setUsername] = useState("");
@@ -20,6 +23,7 @@ const Login = ({ onLogin, setLocation }) => {
   const handleLogin = (e) => {
     e.preventDefault();
     setLoading(true); // Start loading when login is pressed
+    
 
     // Simulate delay (e.g., to show spinner)
     setTimeout(() => {
@@ -29,14 +33,27 @@ const Login = ({ onLogin, setLocation }) => {
           const user = data.find(
             (user) => user.studentId === username && user.password === password
           );
-          setLoading(false); // Stop loading when response is received
+          setLoading(false);
+          // toast.success("Log in successful")
+          // showSuccessToast("Log in succesful");
+           // Stop loading when response is received
 
           if (user) {
+            
             
             setShowToast(true); // Show success toast
             setTimeout(() => {
               setShowToast(false);
+              
               onLogin(user);
+              window.history.pushState(null, "", "/");
+              window.history.pushState(null, "", "/");
+              window.history.pushState(null, "", "/");
+              window.history.pushState(null, "", "/");
+              window.history.pushState(null, "", "/");
+              window.history.pushState(null, "", "/");
+              window.history.pushState(null, "", "/");
+              window.history.pushState(null, "", "/");
             navigate("/");
                // Redirect after a successful login
             }, 1000); // Hide toast after 3 seconds
@@ -100,6 +117,7 @@ const Login = ({ onLogin, setLocation }) => {
                   {loading ? <Spinner size="sm" /> : "Login"}
                 </Button>
               </div>
+           
             </Form>
             <p className="text-center mt-3">
               Don't have an account? <Link to="/signup">Create an account</Link>
@@ -110,13 +128,15 @@ const Login = ({ onLogin, setLocation }) => {
       
       {/* Toast for successful login */}
       {showToast && (
-        <div className="position-fixed top-0 end-0 p-3">
-          <Toast>
-            <ToastHeader>Success</ToastHeader>
-            <ToastBody>Logged in successfully!</ToastBody>
-          </Toast>
-        </div>
+        // <div className="position-fixed top-0 end-0 p-3 rounded">
+        //   <Toast>
+        //     <ToastHeader icon="success"></ToastHeader>
+        //     <ToastBody>Logged in successfully!</ToastBody>
+        //   </Toast>
+        // </div>
+        <Toaster message = "Logged in" title="Log in confirmation" />
       )}
+      
     </Container>
   );
 };

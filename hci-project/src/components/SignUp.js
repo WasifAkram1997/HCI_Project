@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert, Toast, ToastBody, ToastHeader, Spinner } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
+import Toaster from "./Toaster";
 
 const Signup = ({ setLocation, onSignup }) => {
   const [password, setPassword] = useState("");
@@ -52,7 +53,7 @@ const Signup = ({ setLocation, onSignup }) => {
             return; // Exit the function if a duplicate user is found
           }
   
-          const score = 0;
+          const score = 50;
           const events = [];
   
           // If no duplicate, proceed with creating the new user
@@ -313,12 +314,7 @@ const Signup = ({ setLocation, onSignup }) => {
       </Row>
        {/* Toast for successful login */}
        {showToast && (
-        <div className="position-fixed top-0 end-0 p-3">
-          <Toast>
-            <ToastHeader>Success</ToastHeader>
-            <ToastBody>Account created!</ToastBody>
-          </Toast>
-        </div>
+       <Toaster message="Account created" title="Sign Up Confirmation" />
       )}
     </Container>
   );

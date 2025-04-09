@@ -6,14 +6,30 @@ import{
     DateLocalizer,
     momentLocalizer
 } from 'react-big-calendar'
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Container } from 'reactstrap';
 import { useLocation } from 'react-router-dom';
+import EventLegend from './EventLegend';
+import Toaster from './Toaster';
 
 const mLocalizer = momentLocalizer(moment)
 
 
 const CalendarTrial = ({localizer = mLocalizer, user = {user}, setUser={setUser} }) => {
     const location = useLocation();
+
+    // const notifySuccess = () => toast.success('Session Booked Successfully',{
+    //   autoClose: 1000,
+    //   transition: Bounce,
+    //   closeOnClick: true
+    // });
+    // const notifyCancel = () => toast.success('Session Canceled Successfully',{
+    //   autoClose: 1000,
+    //   transition: Bounce,
+    //   closeOnClick: true
+    // });
+
+    // console.log(user.events)
   
     // Use URLSearchParams to parse the query params
     const queryParams = new URLSearchParams(location.search);
@@ -29,6 +45,8 @@ const CalendarTrial = ({localizer = mLocalizer, user = {user}, setUser={setUser}
     const [showBookedSessions, setShowBookedSessions] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState({});
     const [showModal, setShowModal] = useState(false)
+    const [showBookingToast, setShowBookingToast] = useState(false)
+    const [showCancelingToast, setShowCancelingToast] = useState(false)
     const { components, defaultDate, max, views } = useMemo(
         () => ({
         //   components: {
@@ -93,7 +111,7 @@ const CalendarTrial = ({localizer = mLocalizer, user = {user}, setUser={setUser}
       
           if (isEventAlreadyBooked) {
             // If the event is already booked, show an alert and do not proceed
-            alert("This event has already been booked.");
+            // alert("This event has already been booked.");
             setShowModal(false); // Close the modal
             return; // Exit the function
           }
@@ -118,10 +136,10 @@ const CalendarTrial = ({localizer = mLocalizer, user = {user}, setUser={setUser}
       
           const updatedUserData = await response.json();
           setUser(updatedUserData); // Update the user state with the new data
-          alert("Event successfully added");
+          // alert("Event successfully added");
         } catch (error) {
           console.error('Error adding event', error);
-          alert("An error occurred while booking the event.");
+          // alert("An error occurred while booking the event.");
         }
       
         setShowModal(false); // Close the modal after the action
@@ -135,7 +153,7 @@ const CalendarTrial = ({localizer = mLocalizer, user = {user}, setUser={setUser}
           
               // If event is not found, alert the user that the session was never booked
               if (eventIndex === -1) {
-                alert('This session was never booked!');
+                // alert('This session was never booked!');
                 setShowModal(false);
                 return;
               }
@@ -163,7 +181,7 @@ const CalendarTrial = ({localizer = mLocalizer, user = {user}, setUser={setUser}
               const updatedUserData = await response.json();
               setUser(updatedUserData); // Update the user state with the modified user data
           
-              alert('Booking has been successfully canceled!');
+              // alert('Booking has been successfully canceled!');
             } catch (error) {
               console.error('Error canceling event:', error);
             } finally {
@@ -196,7 +214,9 @@ const CalendarTrial = ({localizer = mLocalizer, user = {user}, setUser={setUser}
        // Custom event styling based on event type
   const eventStyleGetter = (event) => {
     let backgroundColor = '';
-    if (event.type === 'Online Fitness Class') {
+    if(user.events.find((userEvent) => userEvent.id == event.id)){
+      backgroundColor = "green"
+    }else if (event.type === 'Online Fitness Class') {
       backgroundColor = 'orange';
     } else if (event.type === 'Personal Training') {
       backgroundColor = 'blue';
@@ -211,8 +231,10 @@ const CalendarTrial = ({localizer = mLocalizer, user = {user}, setUser={setUser}
 
 
     return(
-        <div className="vh-100 p-5 m-5">
+      <Container>
+        <div className="vh-100 my-4">
       <div className="h-75">
+        <EventLegend />
 
         {/* Checkbox controls */}
         <div className='d-flex flex-row my-2 justify-content-between '>
@@ -220,7 +242,19 @@ const CalendarTrial = ({localizer = mLocalizer, user = {user}, setUser={setUser}
             <input
               type="checkbox"
               checked={showAllSessions}
-              onChange={() => setShowAllSessions(!showAllSessions)}
+              onChange={() => {
+                if(showAllSessions){
+                  setShowAllSessions(false)
+                  setShowBookedSessions(false)
+                  setShowOnlineClasses(false)
+                  setShowPersonalTrainingSessions(false)
+                }else{
+                  setShowAllSessions(true)
+                  setShowBookedSessions(true)
+                  setShowOnlineClasses(true)
+                  setShowPersonalTrainingSessions(true)
+                }
+              }}
             />
             Show All Events
           </label>
@@ -280,12 +314,31 @@ const CalendarTrial = ({localizer = mLocalizer, user = {user}, setUser={setUser}
           </ModalBody>
           <ModalFooter>
             {/* <Button color="secondary" onClick={toggleModal}>Close</Button> */}
-            <Button color="success" onClick={handleConfirmation}>Confirm</Button>
-            <Button color="danger" onClick={handleDeletion}>Cancel</Button>
+            {user.events.find((userEvent) => userEvent.id == selectedEvent.id) ? <Button color="danger" onClick={() => {
+              handleDeletion();
+              setShowCancelingToast(true)
+              setTimeout(() => {
+                setShowCancelingToast(false)
+              },1000)
+              // notifyCancel();
+            }}>Cancel Booking</Button> : <Button color="success" onClick={() => {
+              handleConfirmation()
+              setShowBookingToast(true)
+              setTimeout(() => {
+                setShowBookingToast(false)
+              }, 1000)
+              // notifySuccess()
+            }}>Book Session</Button>}
+            
+            
           </ModalFooter>
         </Modal>
       )}
+      <ToastContainer />
     </div>
+    {showBookingToast && <Toaster message="Booked Session" title="Booking Confirmation" />}
+    {showCancelingToast && <Toaster message="Canceled Booking" title="Cancellation Confirmation" />}
+    </Container>
     )
 }
 

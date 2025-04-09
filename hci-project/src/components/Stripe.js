@@ -1,85 +1,56 @@
-import React, {useState} from 'react';
-import ReactDOM from 'react-dom';
-import {loadStripe} from '@stripe/stripe-js';
-import {
-  PaymentElement,
-  useStripe,
-  useElements,
-} from '@stripe/react-stripe-js';
+import React, { useState, useEffect } from "react";
+import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { Button, Alert } from "reactstrap";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-
-  const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
-
-const options = {
-  mode: 'payment',
-  amount: 1099,
-  currency: 'usd',
-  // Fully customizable with appearance API.
-  appearance: {
-    /*...*/
-  },
-};
-
   const [errorMessage, setErrorMessage] = useState(null);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (elements == null) {
-      return;
+    if (!stripe || !elements) {
+      return; // Stripe.js hasn't loaded yet
     }
 
-    // Trigger form validation and wallet collection
-    const {error: submitError} = await elements.submit();
-    if (submitError) {
-      // Show error to your customer
-      setErrorMessage(submitError.message);
-      return;
-    }
-
-    // Create the PaymentIntent and obtain clientSecret from your server endpoint
-    const res = await fetch('/create-intent', {
-      method: 'POST',
-    });
-
-    const {client_secret: clientSecret} = await res.json();
-
-    const {error} = await stripe.confirmPayment({
-      //`Elements` instance that was used to create the Payment Element
+    // Confirm the payment with the PaymentElement component
+    const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
-      clientSecret,
       confirmParams: {
-        return_url: 'https://example.com/order/123/complete',
+        return_url: "https://example.com/order/123/complete", // Dummy URL for successful payment
       },
     });
 
     if (error) {
-      // This point will only be reached if there is an immediate error when
-      // confirming the payment. Show error to your customer (for example, payment
-      // details incomplete)
       setErrorMessage(error.message);
+      setPaymentSuccess(false);
     } else {
-      // Your customer will be redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer will be redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
+      if (paymentIntent.status === 'succeeded') {
+        setPaymentSuccess(true);
+        setErrorMessage(null);
+        alert("Payment Success!"); // Simulate a payment success
+      } else {
+        setErrorMessage('Payment failed.');
+      }
     }
   };
 
   return (
+    <div>
+      <h2>Make a Payment</h2>
+      <form onSubmit={handleSubmit}>
+        <PaymentElement />
+        <Button type="submit" disabled={!stripe}>
+          Pay Now
+        </Button>
+      </form>
 
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <button type="submit" disabled={!stripe || !elements}>
-        Pay
-      </button>
-      {/* Show error message to your customers */}
-      {errorMessage && <div>{errorMessage}</div>}
-    </form>
-    
+      {errorMessage && <Alert color="danger">{errorMessage}</Alert>}
+      {paymentSuccess && <Alert color="success">Payment was successful!</Alert>}
+    </div>
   );
 };
 
-export default CheckoutForm
+export default CheckoutForm;

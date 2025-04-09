@@ -11,7 +11,7 @@ import {
 import moment from 'moment'
 import { useNavigate } from 'react-router-dom'
 
-const EventsAccordion = () => {
+const EventsAccordion = ({user}) => {
     const [open, setOpen] = useState()
     const navigate = useNavigate()
     const [eventsList, setEventsList] = useState([])
@@ -43,21 +43,29 @@ const EventsAccordion = () => {
       }
 
     return(
-        <Container className = "my-4 border rounded p-2">
+        <Container className = "my-4 rounded p-2">
             <h1>Upcoming Events</h1>
             <Accordion open={open} toggle={toggle}>
                 {eventsList.map((event) => (
-                    <AccordionItem key={event.id}>
-                        <AccordionHeader targetId={event.id.toString()}>
-                            {event.title}
+                    <AccordionItem key={event?.id}>
+                        <AccordionHeader targetId={event?.id?.toString()}>
+                            {event?.title}
                         </AccordionHeader>
-                        <AccordionBody accordionId={event.id.toString()}>
+                        <AccordionBody accordionId={event?.id.toString()}>
                             <p><strong>Start Time:</strong> {moment(event.start).format('MMMM Do YYYY, h:mm:ss a')}</p>
                             <p><strong>End Time:</strong> {moment(event.end).format('MMMM Do YYYY, h:mm:ss a')}</p>
                             <p><strong>Type:</strong> {event.type}</p>
-                            <div className='d-flex flex-row justify-end'>
-                                <Button color='success' onClick={handleBook}>Book</Button>
-                            </div>
+                            {user?.events.find((userEvent) => userEvent?.id == event.id) ? <p className='fst-italic fs-6 fw-bold'>*This session has already been booked*</p> : <></>}
+                            {user ? <div className='d-flex flex-row justify-end'>
+                                {
+                                    user?.events?.find((userEvent) => userEvent?.id == event?.id) ? 
+                                    
+                                    <Button color='danger' className='ml-2' onClick={handleBook}>Cancel Booking</Button>
+                                     : <Button color='success'  onClick={handleBook}>Book Session</Button>
+                                }
+                                
+                            </div> : <></>}
+                            
                         </AccordionBody>
                     </AccordionItem>
                 ))}

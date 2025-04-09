@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../ExcerciseForm.css'; // Add this to import custom styles
+// import '../ExcerciseForm.css'; // Add this to import custom styles
+import { Container } from 'reactstrap';
 
 const ExerciseForm = () => {
   const [exercises, setExercises] = useState([]);
@@ -49,8 +50,9 @@ const ExerciseForm = () => {
   };
 
   return (
-    <div className="exercise-form my-4">
-      <h2 className="heading">Exercise Tracker</h2>
+    <Container className='p-0'>
+    <div className="exercise-form">
+    <h4 className="mb-4">🏆 Leaderboard </h4>
       
       <div className="form-group">
         <label>Choose Exercise:</label>
@@ -124,6 +126,7 @@ const ExerciseForm = () => {
         <p className="score-display">Total Score: {score}</p>
       </div>
     </div>
+    </Container>
   );
 };
 

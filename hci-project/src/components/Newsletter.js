@@ -1,11 +1,11 @@
 import EventsAccordion from "./EventsAccordion"
 import NewsAccordion from "./NewsAccordion"
 
-const Newsletter = () => {
+const Newsletter = ({user}) => {
     return(
         <>
             <NewsAccordion />
-            <EventsAccordion />
+            <EventsAccordion user={user} />
         </>
     )
 }

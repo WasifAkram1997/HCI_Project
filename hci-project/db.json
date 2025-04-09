@@ -8,7 +8,7 @@
       "email": "wasifakram@iut-dhaka.edu",
       "contact": "5142403250",
       "password": "test123",
-      "score": 0,
+      "score": 465,
       "events": [
         {
           "id": 2,
@@ -21,7 +21,19 @@
             "username": "zahir",
             "score": 780
           }
-        },
+        }
+      ]
+    },
+    {
+      "id": "425d",
+      "firstName": "Maisha Anan",
+      "lastName": "Prova",
+      "studentId": "40294324",
+      "email": "antora.anan@gmail.com",
+      "contact": "5142403250",
+      "password": "test123",
+      "score": 0,
+      "events": [
         {
           "id": "1",
           "title": "Personal Training - Samir Ahmed's Meeting",
@@ -37,37 +49,27 @@
       ]
     },
     {
-      "id": "f665",
-      "firstName": "wdfwwwwwwwwwwwwwwwww",
-      "lastName": "wwwwwwwwwwwwwwwwwwww",
-      "studentId": "4029433",
-      "email": "d@gmail.com",
-      "contact": "5142403250",
+      "id": "e81e",
+      "firstName": "Mahfuzzur",
+      "lastName": "Rahman",
+      "studentId": "40294992",
+      "email": "mahfuzzur@gmail.com",
+      "contact": "5142403251",
       "password": "test123",
-      "score": 0,
-      "events": []
-    },
-    {
-      "id": "0f07",
-      "firstName": "Gazi Wasif",
-      "lastName": "Akram",
-      "studentId": "40342",
-      "email": "a@gmail.com",
-      "contact": "23213",
-      "password": "test123",
-      "score": 0,
-      "events": []
-    },
-    {
-      "id": "425d",
-      "firstName": "Maisha Anan",
-      "lastName": "Prova",
-      "studentId": "40294324",
-      "email": "antora.anan@gmail.com",
-      "contact": "5142403250",
-      "password": "test123",
-      "score": 0,
+      "score": 82.5,
       "events": [
+        {
+          "id": "2",
+          "title": "Online Fitness Class - Zahir Khan's Presentation",
+          "start": "2025-03-05T19:00:00.000Z",
+          "end": "2025-03-05T21:00:00.000Z",
+          "allDay": false,
+          "type": "Online Fitness Class",
+          "resource": {
+            "username": "zahir",
+            "score": 780
+          }
+        },
         {
           "id": "1",
           "title": "Personal Training - Samir Ahmed's Meeting",
@@ -231,6 +233,14 @@
       "id": "10",
       "title": "How to Get the Most Out of Your Gym Membership at Concordia",
       "description": "As a Concordia student, your gym membership is an excellent resource to help you achieve your fitness goals. But to truly make the most of it, it’s important to utilize the full range of facilities and classes available. This includes not only using the gym for weightlifting and cardio sessions but also attending fitness classes, joining fitness challenges, and using additional services like personal training or nutritional counseling. To maximize your membership, it’s helpful to plan your workouts in advance, try new classes, and track your progress. In this article, we’ll give you tips on how to make the most of your gym membership at Concordia and explain the different programs and opportunities that can help you stay on track with your fitness journey."
+    }
+  ],
+  "payment_intents": [
+    {
+      "id": "pi_1Hj0FSJcYy23A23bOg",
+      "client_secret": "pi_1Hj0FSJcYy23A23bOg_secret_LJswkxOj6rDzL5J9FxH7qY",
+      "amount": 1000,
+      "currency": "usd"
     }
   ]
 }

@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 const Footer = () => {
   return (
-    <div className='px-5 py-3 mt-3 text-white ' style={{ backgroundColor: 'rgb(70, 50, 55)' }}>
+    <div className=' py-2 mt-3 text-white footer' style={{ backgroundColor: 'rgb(70, 50, 55)' }}>
       <Container>
         <Row className="">
           {/* Recreation, sports & fitness Section */}
