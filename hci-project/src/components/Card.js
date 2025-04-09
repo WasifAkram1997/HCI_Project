@@ -1,4 +1,4 @@
-import { CardBody, Card, CardTitle, CardText } from "reactstrap";
+import { CardBody, Card, CardTitle, CardText, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 
 const MyCard = ({ item }) => {
@@ -15,7 +15,7 @@ const MyCard = ({ item }) => {
       }}
 
       className="cursor-pointer"
-      onClick={() => navigate(item.path)}
+      // onClick={() => navigate(item.path)}
     >
       <img
         alt={item.altText}
@@ -29,6 +29,7 @@ const MyCard = ({ item }) => {
       <CardBody style={{ flexGrow: 1 }}> {/* Ensures the card body grows to fill available space */}
         <CardTitle tag="h5">{item.title}</CardTitle>
         <CardText>{item.description}</CardText>
+        <Button color="primary" onClick={() => navigate(item.path)}>Know More</Button>
       </CardBody>
     </Card>
   );

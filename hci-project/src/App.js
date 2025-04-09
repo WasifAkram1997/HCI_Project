@@ -23,6 +23,9 @@ import CheckoutPage from "./components/CheckoutPage";
 import PaymentConfirmation from "./components/PaymentSuccess";
 import "./App.css"
 import 'react-toastify/dist/ReactToastify.css';
+import FAQAccordion from "./components/FAQ";
+import PricingCard from "./components/PricingCard";
+import CheckoutPageFirstTime from "./components/CheckoutPgaeFirstTime";
 
 
 
@@ -36,7 +39,7 @@ const App = () => {
     setUser(user);
   };
 
-  const amount = 10.00;
+  const amount = user?.amount;
 
 //   const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
   const stripePromise = loadStripe('pk_test_51RBaYOB2FNgKstoSb3jJpG2dQXroGOyqyLhHFULWKQ2GUpMd6relZIYj9QTFkM2AmlQGxcZ1t3SKP4X5JKKbYdA300QsJsxhkq');  // Replace with your actual public key
@@ -102,29 +105,40 @@ const App = () => {
         
 
         {
-          location == '/' || user ? (<NavbarComponent onLogout={handleLogin} user={user} />) : <></>
+        (location !== "/paymentfirsttime" && (location === '/' || location === "/faq" || location === "/pricing") || user) ? (
+          <NavbarComponent onLogout={handleLogin} user={user} />
+        ) : null
         }
         
         <Routes>
           {/* Routes without Navbar (Login, Signup) */}
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login onLogin={handleLogin} setLocation={setLocation}/>} />
-          <Route path="/signup" element={<Signup setLocation={setLocation} onSignup={handleLogin}/>} />
+          <Route path="/signup" element={<Signup setLocation={setLocation} onSignup={handleLogin} user={user} setUser={setUser}/>} />
 
           {/* Routes with Navbar, only if the user is logged in */}
           <Route path="/leaderboard" element={  <Leaderboard user={user} setUser={setUser} /> } />
           <Route path="/newsletter" element={ <Newsletter user={user}/> } />
           <Route path="/contact" element={ <Contact />} />
           <Route path="/scheduler" element={ <CalendarTrial user={user} setUser={setUser} /> } />
+          <Route path="/faq" element={< FAQAccordion />} />
+          <Route path= "/pricing" element={<PricingCard />} />
           <Route path="/payment" element={ <Elements stripe={stripePromise} options={{
             mode: 'payment',
             amount: convertToSubCurrency(amount),
             currency: "usd"
-          }}> <CheckoutPage amount={amount} /> </Elements>} />
+          }}> <CheckoutPage user={user} /> </Elements>} />
+             <Route path="/paymentfirsttime" element={ <Elements stripe={stripePromise} options={{
+            mode: 'payment',
+            amount: convertToSubCurrency(amount),
+            currency: "usd"
+          }}> <CheckoutPageFirstTime user={user} setUser={setUser} setLocation={setLocation} /> </Elements>} />
           <Route path="/payment-success" element={<PaymentConfirmation /> }/>
         </Routes>
         {
-          location == '/' || user ? (<Footer />) : <></>
+        (location !== "/paymentfirsttime" && (location === '/' || location === "/faq" || location === "/pricing") || user) ? (
+          <Footer />
+        ) : null
         }
         
         

@@ -4,29 +4,17 @@ import {Col, Container, Row} from 'reactstrap'
 const CardsList = () => {
     const list =[
         {
-            title: "Leaderboard",
-            description: "Track your progress, Create a playlist, Track completion and Ranking against other gym goers",
+            title: "FAQ",
+            description: "Get answers to common questions",
             image: '/images/image1.jpg',
-            path: '/leaderboard'
+            path: '/faq'
         },
         {
-            title: "Newsletter",
-            description: "Get exposed to exciting articles and upcoming events",
+            title: "Pricing",
+            description: "Various payment cycles to ease the burden",
             image: '/images/image2.avif',
-            path: '/newsletter'
-        },
-        {
-            title: "Scheduler",
-            description: "Schedule online classes, personal training session and visualize schedule to maximize gain",
-            image: '/images/image3.jpg',
-            path: '/scheduler'
-        },  {
-            title: "Easy Payment",
-            description: "Pay online through our fast and secured portal",
-            image: '/images/image4.jpeg',
-            path: '/payment'
-        },
-       
+            path: '/pricing'
+        }
     ]
     return(
         <Container>

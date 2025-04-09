@@ -9,20 +9,11 @@
       "contact": "5142403250",
       "password": "test123",
       "score": 465,
-      "events": [
-        {
-          "id": 2,
-          "title": "Online Fitness Class - Zahir Khan's Presentation",
-          "start": "2025-03-05T19:00:00.000Z",
-          "end": "2025-03-05T21:00:00.000Z",
-          "allDay": false,
-          "type": "Online Fitness Class",
-          "resource": {
-            "username": "zahir",
-            "score": 780
-          }
-        }
-      ]
+      "plan": "Yearly",
+      "amount": 420,
+      "paymentDate": "2025-04-09T10:18:08.982Z",
+      "nextPaymentDate": "2026-04-09T10:18:08.982Z",
+      "events": []
     },
     {
       "id": "425d",
@@ -32,6 +23,10 @@
       "email": "antora.anan@gmail.com",
       "contact": "5142403250",
       "password": "test123",
+      "plan": "Yearly",
+      "amount": 420,
+      "paymentDate": "2025-04-09T10:18:08.982Z",
+      "nextPaymentDate": "2026-04-09T10:18:08.982Z",
       "score": 0,
       "events": [
         {
@@ -57,6 +52,10 @@
       "contact": "5142403251",
       "password": "test123",
       "score": 82.5,
+      "plan": "Yearly",
+      "amount": 420,
+      "paymentDate": "2025-04-09T10:18:08.982Z",
+      "nextPaymentDate": "2026-04-09T10:18:08.982Z",
       "events": [
         {
           "id": "2",
@@ -83,6 +82,21 @@
           }
         }
       ]
+    },
+    {
+      "id": "07a6",
+      "firstName": "shafkat",
+      "lastName": "zahir",
+      "studentId": "40294333",
+      "email": "a@gmail.com",
+      "contact": "5142403250",
+      "password": "test123",
+      "score": 52.5,
+      "events": [],
+      "plan": "Yearly",
+      "amount": 420,
+      "paymentDate": "2025-04-09T10:18:08.982Z",
+      "nextPaymentDate": "2026-04-09T10:18:08.982Z"
     }
   ],
   "events": [
@@ -96,18 +110,6 @@
       "resource": {
         "username": "samir",
         "score": 450
-      }
-    },
-    {
-      "id": "2",
-      "title": "Online Fitness Class - Zahir Khan's Presentation",
-      "start": "2025-03-05T14:00:00",
-      "end": "2025-03-05T16:00:00",
-      "allDay": false,
-      "type": "Online Fitness Class",
-      "resource": {
-        "username": "zahir",
-        "score": 780
       }
     },
     {
@@ -235,12 +237,106 @@
       "description": "As a Concordia student, your gym membership is an excellent resource to help you achieve your fitness goals. But to truly make the most of it, it’s important to utilize the full range of facilities and classes available. This includes not only using the gym for weightlifting and cardio sessions but also attending fitness classes, joining fitness challenges, and using additional services like personal training or nutritional counseling. To maximize your membership, it’s helpful to plan your workouts in advance, try new classes, and track your progress. In this article, we’ll give you tips on how to make the most of your gym membership at Concordia and explain the different programs and opportunities that can help you stay on track with your fitness journey."
     }
   ],
-  "payment_intents": [
+  "faq": [
     {
-      "id": "pi_1Hj0FSJcYy23A23bOg",
-      "client_secret": "pi_1Hj0FSJcYy23A23bOg_secret_LJswkxOj6rDzL5J9FxH7qY",
-      "amount": 1000,
-      "currency": "usd"
+      "id": "1",
+      "question": "How often should I work out to build muscle?",
+      "answer": "Building muscle requires consistency. Ideally, you should aim for 3-5 strength training sessions per week, targeting different muscle groups each session. Don't forget to include rest days for recovery."
+    },
+    {
+      "id": "2",
+      "question": "What is the best time of day to exercise?",
+      "answer": "The best time to exercise is the time that fits into your schedule and allows you to be consistent. Some people prefer morning workouts, while others feel more energized in the evening. Choose a time when you feel most motivated."
+    },
+    {
+      "id": "3",
+      "question": "How can I avoid injury while lifting weights?",
+      "answer": "Focus on proper form and start with lighter weights before increasing the load. Always warm up before lifting and cool down afterward. If you're unsure about your form, consider working with a trainer."
+    },
+    {
+      "id": "4",
+      "question": "How long should my workout sessions be?",
+      "answer": "For strength training, aim for about 45-60 minutes per session. Cardio sessions can range from 30 minutes to an hour depending on your fitness goals."
+    },
+    {
+      "id": "5",
+      "question": "How important is rest between sets?",
+      "answer": "Rest between sets is essential for muscle recovery. For strength training, rest for about 1-2 minutes between sets. For endurance exercises, 30-60 seconds may be sufficient."
+    },
+    {
+      "id": "6",
+      "question": "What are the best exercises for beginners?",
+      "answer": "For beginners, focus on full-body exercises such as squats, push-ups, lunges, and deadlifts. These compound movements target multiple muscle groups and help build strength."
+    },
+    {
+      "id": "7",
+      "question": "How much protein do I need to build muscle?",
+      "answer": "Aim for around 1.6 to 2.2 grams of protein per kilogram of body weight per day. This will vary depending on your specific fitness goals and activity level."
+    },
+    {
+      "id": "8",
+      "question": "Should I take supplements to build muscle?",
+      "answer": "Supplements are not necessary for muscle building, but they can help if you struggle to meet your nutrition needs. Common supplements include protein powder, creatine, and branched-chain amino acids (BCAAs)."
+    },
+    {
+      "id": "9",
+      "question": "How do I stay motivated to work out consistently?",
+      "answer": "Set achievable goals, track your progress, and find a workout buddy. Join fitness challenges, vary your workout routine, and reward yourself for hitting milestones to stay motivated."
+    },
+    {
+      "id": "10",
+      "question": "Is cardio necessary for muscle building?",
+      "answer": "While cardio isn’t required for muscle building, it can improve cardiovascular health and aid in fat loss, which can help reveal your muscles. Incorporate some cardio, but focus on strength training for muscle growth."
+    },
+    {
+      "id": "11",
+      "question": "What should I eat before and after a workout?",
+      "answer": "Before a workout, eat a balanced meal with protein and complex carbs 1-2 hours prior. After a workout, consume protein and carbs within 30-60 minutes to help muscle recovery."
+    },
+    {
+      "id": "12",
+      "question": "How can I increase flexibility?",
+      "answer": "Incorporate stretching into your routine, focusing on dynamic stretches before workouts and static stretches afterward. Yoga can also improve flexibility over time."
+    },
+    {
+      "id": "13",
+      "question": "What should I do if I don’t see progress in my workouts?",
+      "answer": "If you’re not seeing progress, reassess your routine and nutrition. Ensure you’re progressively increasing the intensity of your workouts and eating enough to support muscle growth."
+    },
+    {
+      "id": "14",
+      "question": "How do I track my fitness progress?",
+      "answer": "Track your progress by measuring your body measurements, strength gains, and overall performance. You can also track your workouts and nutrition using apps to see how you’re improving over time."
+    },
+    {
+      "id": "15",
+      "question": "Should I do cardio before or after lifting weights?",
+      "answer": "It depends on your fitness goals. If you’re focusing on muscle building, prioritize lifting weights first. If your goal is endurance or fat loss, you can start with cardio."
+    },
+    {
+      "id": "16",
+      "question": "What is HIIT, and is it effective?",
+      "answer": "HIIT (High-Intensity Interval Training) is a workout style that alternates between intense bursts of exercise and short rest periods. It's effective for improving cardiovascular health, burning fat, and increasing endurance."
+    },
+    {
+      "id": "17",
+      "question": "Can I work out every day?",
+      "answer": "You can work out every day, but it’s important to vary your routine and incorporate rest days for recovery. Overtraining can lead to injury and hinder muscle growth."
+    },
+    {
+      "id": "18",
+      "question": "How do I prevent muscle soreness after a workout?",
+      "answer": "To reduce soreness, ensure you warm up before your workout and cool down afterward. Foam rolling and stretching can also help, along with staying hydrated and eating protein-rich foods."
+    },
+    {
+      "id": "19",
+      "question": "Is it normal to feel tired after a workout?",
+      "answer": "Yes, feeling tired after a workout is normal, especially after intense or prolonged sessions. Just make sure you’re giving your body enough time to recover before your next workout."
+    },
+    {
+      "id": "20",
+      "question": "How do I avoid burnout from working out?",
+      "answer": "To avoid burnout, ensure you're getting enough rest and sleep, mixing up your workouts to prevent monotony, and listening to your body. Set realistic goals and avoid overtraining."
     }
   ]
 }

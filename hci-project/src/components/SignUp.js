@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert, Toas
 import { Link, useNavigate } from "react-router-dom";
 import Toaster from "./Toaster";
 
-const Signup = ({ setLocation, onSignup }) => {
+const Signup = ({ setLocation, onSignup, user, setUser }) => {
   const [password, setPassword] = useState("");
   const [confirmpass, setConfirmPass] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -14,6 +14,8 @@ const Signup = ({ setLocation, onSignup }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false)
   const [showToast, setShowToast] = useState(false)
+  const [plan ,setPlan] = useState({planName: "", price: 0})
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false)
   const [formErrors, setFormErrors] = useState({
     firstNameError: "",
     lastNameError: "",
@@ -26,9 +28,41 @@ const Signup = ({ setLocation, onSignup }) => {
 
   const navigate = useNavigate();
 
+
+
   useEffect(() => {
     setLocation("/signup");
   }, []);
+
+   // Function to handle the plan selection
+   const handleSelect = (event) => {
+    const selectedValue = event.target.value;
+
+    // Setting the plan name and corresponding price
+    let planName = '';
+    let price = 0;
+
+    switch (selectedValue) {
+      case 'Bi-weekly':
+        planName = 'Bi-weekly';
+        price = 25;
+        break;
+      case 'Monthly':
+        planName = 'Monthly';
+        price = 50;
+        break;
+      case 'Yearly':
+        planName = 'Yearly';
+        price = 420;
+        break;
+      default:
+        planName = '';
+        price = 0;
+    }
+
+    // Update the state with the selected plan and price
+    setPlan({ planName, price });
+  };
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -52,35 +86,53 @@ const Signup = ({ setLocation, onSignup }) => {
             alert("A user with the same student ID or email already exists.");
             return; // Exit the function if a duplicate user is found
           }
+
+           // Create the new user instance with all form data
+        const newUser = {
+          firstName,
+          lastName,
+          studentId,
+          email,
+          contact,
+          password,
+          score: 50, // Default score for the new user
+          events: [], // Default events array
+          plan: plan.planName,
+          amount: plan.price
+        };
+
+        setUser(newUser)
+        navigate("/paymentfirsttime")
+
   
-          const score = 50;
-          const events = [];
+          // const score = 50;
+          // const events = [];
   
           // If no duplicate, proceed with creating the new user
-          fetch("http://localhost:5000/users", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ firstName, lastName, studentId, email, contact, password, score, events }), // Add other fields as needed
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log("User created", data);
-              // alert("Account created successfully!");
-              setShowToast(true); // Show success toast
-              setTimeout(() => {
-                setShowToast(false);
-                onSignup(data)
-                navigate("/");
-                 // Redirect after a successful login
-              }, 1000); // Hide toast after 3 seconds
+          // fetch("http://localhost:5000/users", {
+          //   method: "POST",
+          //   headers: {
+          //     "Content-Type": "application/json",
+          //   },
+          //   body: JSON.stringify({ firstName, lastName, studentId, email, contact, password, score, events }), // Add other fields as needed
+          // })
+          //   .then((response) => response.json())
+          //   .then((data) => {
+          //     console.log("User created", data);
+          //     // alert("Account created successfully!");
+          //     setShowToast(true); // Show success toast
+          //     setTimeout(() => {
+          //       setShowToast(false);
+          //       onSignup(data)
+          //       navigate("/");
+          //        // Redirect after a successful login
+          //     }, 1000); // Hide toast after 3 seconds
               
-            })
-            .catch((error) => {
-              console.error("Error creating account", error);
-              setError("Error creating account");
-            });
+          //   })
+          //   .catch((error) => {
+          //     console.error("Error creating account", error);
+          //     setError("Error creating account");
+          //   });
         })
         .catch((error) => {
           console.error("Error fetching users", error);
@@ -274,6 +326,20 @@ const Signup = ({ setLocation, onSignup }) => {
                   {formErrors.contactError && <Alert color="danger">{formErrors.contactError}</Alert>}
                 </FormGroup>
                 <FormGroup>
+                  <Label className="w-100" for="Plan">Plan</Label>
+                  <div className="border rounded px-1 py-2">
+                    <select value={plan.planName} onChange={handleSelect} className="border-0 w-100" required style={{
+                    border: 'none', // Ensure no border
+                    outline: 'none', // Remove outline that may reappear
+                    }}>
+                      <option value="" disabled>Select an option</option>
+                      <option value="Bi-weekly">Bi-weekly($25)</option>
+                      <option value="Monthly">Monthly($50)</option>
+                      <option value="Yearly">Yearly($420)</option>
+                    </select>
+                  </div>
+                </FormGroup>
+                <FormGroup>
                   <Label for="Password">Password</Label>
                   <Input
                     type="password"
@@ -316,6 +382,9 @@ const Signup = ({ setLocation, onSignup }) => {
        {showToast && (
        <Toaster message="Account created" title="Sign Up Confirmation" />
       )}
+
+
+      
     </Container>
   );
 };
